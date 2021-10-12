@@ -1,8 +1,8 @@
 from django.db import models
 from django.db.models.fields import BooleanField, CharField, FloatField, IntegerField, SmallIntegerField
 from django.db.models.fields.files import ImageField
-from user import User
-from inmueble import Inmueble
+from .user import User
+from .inmueble import Inmueble
 
 
 class RegistroInmueble(models.Model):

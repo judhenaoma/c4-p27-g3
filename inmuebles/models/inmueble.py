@@ -1,9 +1,8 @@
+from .user import User
 from django.db import models
 from django.db.models.fields import BooleanField, CharField, FloatField, IntegerField, SmallIntegerField
 from django.db.models.fields.files import ImageField
-from user import User
-
-
+from PIL import Image, ImageChops, ImageEnhance, ImageOps
 
 
 class Inmueble(models.Model):
@@ -12,7 +11,6 @@ class Inmueble(models.Model):
     ('FC', 'Finca'),
     ('CS', 'Casa'),
     ('AS', 'Aparta-estudios'),
-
 ]
     id = models.BigAutoField(primary_key=True)
     usuario_id = models.ForeignKey(User, related_name='inmuebles',on_delete=models.CASCADE)
