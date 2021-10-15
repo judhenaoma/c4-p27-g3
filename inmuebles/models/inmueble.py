@@ -1,8 +1,11 @@
 from .user import User
 from django.db import models
-from django.db.models.fields import BooleanField, CharField, FloatField, IntegerField, SmallIntegerField
+from django.db.models.fields import BooleanField, CharField, DateField, FloatField, IntegerField, SmallIntegerField
 from django.db.models.fields.files import ImageField
 from PIL import Image, ImageChops, ImageEnhance, ImageOps
+from django.utils.timezone import now
+
+
 
 
 class Inmueble(models.Model):
@@ -29,4 +32,8 @@ class Inmueble(models.Model):
     latitud = FloatField(null = False)
     longitud = FloatField(null = False)
     seguridad = BooleanField(default=False)
-    imagenes = ImageField()
+    imagenesPrincipal = models.ImageField(upload_to = 'inmuebles/', null = True)
+    imagenes1 = ImageField(upload_to = 'inmuebles/', null = True)
+    imagenes2 = ImageField(upload_to = 'inmuebles/', null = True)
+    imagenes3 = ImageField(upload_to = 'inmuebles/', null = True)
+    fechacreacion = DateField(default=now)
