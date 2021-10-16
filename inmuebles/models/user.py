@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.contrib.auth.hashers import make_password
+
 class UserManager(BaseUserManager):
 
     def create_userhost(self, username, password=None):
@@ -9,12 +10,12 @@ class UserManager(BaseUserManager):
             password=password,
         )
         user.is_host = True
-        user.is_hostholder = False
+        user.is_hostHolder = False
         user.save(using=self._db)
 
 
 
-    def create_user(self, username, password=None):
+    def create_user(self, username, password, email):
         """
         Creates and saves a user with the given username and password.
         """
@@ -52,10 +53,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_host = models.BooleanField(default=False)
     is_houseHolder = models.BooleanField(default=True)
 
-    # def save(self, **kwargs):
-    #     some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
-    #     self.password = make_password(self.password, some_salt)
-    #     super().save(**kwargs)
+    def save(self, **kwargs):
+        some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
+        self.password = make_password(self.password, some_salt)
+        super().save(**kwargs)
+        
     objects = UserManager()
     USERNAME_FIELD = 'username'
     #REQUIRED_FIELDS = ['email', 'password']
