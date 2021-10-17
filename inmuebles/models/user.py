@@ -5,10 +5,11 @@ from django.contrib.auth.hashers import make_password
 
 class UserManager(BaseUserManager):
 
-    def create_userhost(self, username, password=None):
+    def create_userhost(self, username, password, email):
         user = self.create_user(
             username=username,
             password=password,
+            email=email
         )
         user.is_host = True
         user.is_houseHolder = False
@@ -21,11 +22,9 @@ class UserManager(BaseUserManager):
         """
         if not username:
             raise ValueError('Users must have an username')
-        user = self.model(username=username)
+        user = self.model(username=username, email = email)
         user.set_password(password)
     
-        
-
         user.save(using=self._db)
 
         return user
