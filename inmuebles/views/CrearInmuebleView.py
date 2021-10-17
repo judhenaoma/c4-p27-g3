@@ -39,6 +39,7 @@ class CrearInmuebleView(APIView):
             longitud = inmueble['longitud']
             latitud = inmueble['latitud']
             fechacreacion = inmueble['fechacreacion']
+            imagenes1 = inmueble['imagenes1']
 
             Inmueble.objects.create(usuario_id = user_instance, 
             departamento = departamento, 
@@ -49,7 +50,8 @@ class CrearInmuebleView(APIView):
             area = area,
             longitud = longitud,
             latitud = latitud,
-            fechacreacion = fechacreacion)
+            fechacreacion = fechacreacion,
+            imagenes1 = imagenes1)
 
             
     
