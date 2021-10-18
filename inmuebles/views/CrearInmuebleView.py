@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from ..models.inmueble import Inmueble
-from ..serializers.ListaInmuebleSerializer import InmuebleSerializer
+from ..serializers.InmuebleSerializer import InmuebleSerializer
 from django.contrib.auth import get_user_model
 from rest_framework import permissions
 
@@ -30,6 +30,7 @@ class CrearInmuebleView(APIView):
             user_instance = User.objects.get(id = user.id)
 
             departamento = inmueble['departamento']
+            titulo = inmueble['titulo']
             municipio = inmueble['municipio']
             direccion = inmueble['direccion']
             precio = inmueble['precio']
@@ -39,7 +40,7 @@ class CrearInmuebleView(APIView):
             longitud = inmueble['longitud']
             latitud = inmueble['latitud']
             fechacreacion = inmueble['fechacreacion']
-            imagenes1 = inmueble['imagenes1']
+            imagen1 = inmueble['imagen1']
 
             Inmueble.objects.create(usuario_id = user_instance, 
             departamento = departamento, 
@@ -51,7 +52,8 @@ class CrearInmuebleView(APIView):
             longitud = longitud,
             latitud = latitud,
             fechacreacion = fechacreacion,
-            imagenes1 = imagenes1)
+            imagen1 = imagen1,
+            titulo = titulo)
 
             
     

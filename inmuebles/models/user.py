@@ -48,7 +48,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField('Username', max_length = 15, unique=True)
     password = models.CharField('Password', max_length = 256)
     name = models.CharField('Name', max_length = 30)
-    email = models.EmailField('Email', default= "NULL", max_length = 100)
+    email = models.EmailField('Email', default= "NULL", max_length = 100, unique=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     last_name = models.CharField(max_length=30, null=True)
@@ -56,10 +56,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_host = models.BooleanField(default=False)
     is_houseHolder = models.BooleanField(default=True)
 
-    def save(self, **kwargs):
-        some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
-        self.password = make_password(self.password, some_salt)
-        super().save(**kwargs)
+    # def save(self, **kwargs):
+    #     some_salt = 'mMUj0DrIK6vgtdIYepkIxN'
+    #     self.password = make_password(self.password, some_salt)
+    #     super().save(**kwargs)
 
     objects = UserManager()
     USERNAME_FIELD = 'username'

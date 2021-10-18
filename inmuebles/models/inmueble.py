@@ -2,10 +2,9 @@ from .user import User
 from django.db import models
 from django.db.models.fields import BooleanField, CharField, DateField, FloatField, IntegerField, SmallIntegerField
 from django.db.models.fields.files import ImageField
-from PIL import Image, ImageChops, ImageEnhance, ImageOps
 from django.utils.timezone import now
-
-
+from django.utils.text import slugify
+from autoslug import AutoSlugField
 
 
 class Inmueble(models.Model):
@@ -16,7 +15,9 @@ class Inmueble(models.Model):
     ('AS', 'Aparta-estudios'),
 ]
     id = models.BigAutoField(primary_key=True)
-    usuario_id = models.ForeignKey(User, related_name='inmuebles',on_delete=models.CASCADE)
+    titulo = models.CharField(max_length=60, null=True)
+    
+    id_url = AutoSlugField(populate_from = 'titulo', unique = True, null=True)
     departamento = CharField(max_length=50)
     municipio = CharField(max_length=50)
     tipo_inmueble = CharField(max_length=100, choices=TIPOS_INMUEBLES)
@@ -32,8 +33,9 @@ class Inmueble(models.Model):
     latitud = FloatField(null = False)
     longitud = FloatField(null = False)
     seguridad = BooleanField(default=False)
-    imagenesPrincipal = models.ImageField(upload_to = 'inmuebles/', null = True)
-    imagenes1 = ImageField(upload_to = 'inmuebles/', null = True)
-    imagenes2 = ImageField(upload_to = 'inmuebles/', null = True)
-    imagenes3 = ImageField(upload_to = 'inmuebles/', null = True)
-    fechacreacion = DateField(default=now)
+    imagenPrincipal = models.ImageField(upload_to = 'inmuebles/', null = True)
+    imagen1 = ImageField(upload_to = 'inmuebles/', null = True)
+    imagen2 = ImageField(upload_to = 'inmuebles/', null = True)
+    imagen3 = ImageField(upload_to = 'inmuebles/', null = True)
+    fechacreacion = DateField(default=now())
+    usuario_id = models.ForeignKey(User, related_name='inmuebles',on_delete=models.CASCADE)

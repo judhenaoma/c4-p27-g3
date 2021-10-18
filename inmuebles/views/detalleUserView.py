@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from django.contrib.auth import get_user_model
 from rest_framework import authentication, permissions
-from ..serializers.detalleUserSerializer import DetalleUserSerializer, User
+from ..serializers.UserSerializer import UserSerializer, User
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth import get_user_model
@@ -17,7 +17,7 @@ class detalleUserView(APIView):
             User = get_user_model()
             
             user = request.user 
-            user = DetalleUserSerializer(user)
+            user = UserSerializer(user)
 
             if user:
             
