@@ -1,5 +1,7 @@
 from datetime import timedelta
 from pathlib import Path
+import django_heroku
+django_heroku.settings(locals())
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
