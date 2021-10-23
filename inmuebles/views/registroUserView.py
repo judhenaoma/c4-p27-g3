@@ -16,6 +16,8 @@ class registroUserView(APIView):
             password = data['password']
             confirm_password = data['confirm_password']
             email = data['email']
+            name = data['nombre']
+            last_name = data['apellido']
             is_host = data['is_host']
 
             if is_host == "True":
@@ -31,16 +33,24 @@ class registroUserView(APIView):
             
             if password == confirm_password:
                 if len(password) > 6:
-                    if not User.objects.filter(username= username).exists():
+                    if not User.objects.filter(username= username).exists() and not User.objects.filter(email=email):
                         if not is_host:
-                            User.objects.create_user(username = username, password = password, email = email)
+                            User.objects.create_user(username = username, 
+                            password = password, 
+                            email = email,
+                            name = name,
+                            last_name = last_name)
 
                             return Response(
                                 {'Felicitaciones':'La cuenta de arrendatario se ha creeado correctamentee'},
                                 status= status.HTTP_200_OK
                             )
                         else:
-                            User.objects.create_userhost(username = username, password = password, email = email)
+                            User.objects.create_userhost(username = username, 
+                            password = password, 
+                            email = email,
+                            name = name,
+                            last_name = last_name)
                             return Response(
                                 {'Felicitaciones':'La cuenta de arrendador se ha creeado correctamentee'},
                                 status= status.HTTP_200_OK
@@ -48,7 +58,7 @@ class registroUserView(APIView):
                     
                     else:
                         return Response(
-                            {'error':'El usuario ya existe'},
+                            {'error':'El usuario ya existe con el username o email dado'},
                             status = status.HTTP_400_BAD_REQUEST
                         )
                 else:

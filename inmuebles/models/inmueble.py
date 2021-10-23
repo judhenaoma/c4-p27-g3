@@ -37,5 +37,9 @@ class Inmueble(models.Model):
     imagen1 = ImageField(upload_to = 'inmuebles/', null = True)
     imagen2 = ImageField(upload_to = 'inmuebles/', null = True)
     imagen3 = ImageField(upload_to = 'inmuebles/', null = True)
-    fechacreacion = DateField(default=now())
+    fechacreacion = DateField(default=now, null = True)
     usuario_id = models.ForeignKey(User, related_name='inmuebles',on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return f"{self.departamento}, {self.municipio}, {self.titulo}"

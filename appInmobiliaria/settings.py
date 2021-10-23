@@ -99,17 +99,28 @@ WSGI_APPLICATION = 'appInmobiliaria.wsgi.application'
 
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'dfkkkirecqlmj6',
+#         'USER': 'ejrqxdelfvncwm',
+#         'PASSWORD': 'f8d80ab32a4f27a658dafb6f5f84388334d03e3b8a6796b18e66033dd4e7bf29',
+#         'HOST': 'ec2-35-171-250-21.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#         }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dfkkkirecqlmj6',
-        'USER': 'ejrqxdelfvncwm',
-        'PASSWORD': 'f8d80ab32a4f27a658dafb6f5f84388334d03e3b8a6796b18e66033dd4e7bf29',
-        'HOST': 'ec2-35-171-250-21.compute-1.amazonaws.com',
+        'NAME': 'd32ufgocuf985o',
+        'USER': 'erokzdsvrdayvk',
+        'PASSWORD': 'a70410e26df88769207a8cae1fda9387fcfd26712332a2c0dad4046045471da4',
+        'HOST': 'ec2-34-233-64-238.compute-1.amazonaws.com',
         'PORT': '5432',
         }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

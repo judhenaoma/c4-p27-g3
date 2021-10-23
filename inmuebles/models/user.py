@@ -5,24 +5,30 @@ from django.contrib.auth.hashers import make_password
 
 class UserManager(BaseUserManager):
 
-    def create_userhost(self, username, password, email):
+    def create_userhost(self, username, password, email, name, last_name):
         user = self.create_user(
             username=username,
             password=password,
-            email=email
+            email=email,
+            name= name,
+            last_name= last_name
         )
+        
         user.is_host = True
         user.is_houseHolder = False
         user.save(using=self._db)
-
-
-    def create_user(self, username, password, email):
+    
+    def create_user(self, username, password, email, name, last_name):
         """
         Creates and saves a user with the given username and password.
         """
         if not username:
-            raise ValueError('Users must have an username')
-        user = self.model(username=username, email = email)
+            raise ValueError('El username es obligatorio')
+        user = self.model(
+            username=username, 
+            email=email,
+            name = name,
+            last_name = last_name)
         user.set_password(password)
     
         user.save(using=self._db)
@@ -33,10 +39,11 @@ class UserManager(BaseUserManager):
         """
         Creates and saves a superuser with the given username and password.
         """
-        user = self.create_user(
+        user = self.model(
             username=username,
-            password=password,
+            password=password
             )
+        user.set_password(password)
         user.is_staff = True
         user.is_superuser = True
         user.is_houseHolder = False
@@ -66,5 +73,5 @@ class User(AbstractBaseUser, PermissionsMixin):
     #REQUIRED_FIELDS = ['email', 'password']
 
     def __str__(self):
-        return self.username
+        return self.email
     
