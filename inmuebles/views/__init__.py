@@ -1,2 +1,2 @@
 from ..models.user import User
-from ..models.inmueble import Inmueble
+from .verifyTokenView import VerifyTokenView

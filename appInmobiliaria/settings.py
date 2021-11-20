@@ -111,13 +111,23 @@ WSGI_APPLICATION = 'appInmobiliaria.wsgi.application'
 # }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd32ufgocuf985o',
+#         'USER': 'erokzdsvrdayvk',
+#         'PASSWORD': 'a70410e26df88769207a8cae1fda9387fcfd26712332a2c0dad4046045471da4',
+#         'HOST': 'ec2-34-233-64-238.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#         }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd32ufgocuf985o',
-        'USER': 'erokzdsvrdayvk',
-        'PASSWORD': 'a70410e26df88769207a8cae1fda9387fcfd26712332a2c0dad4046045471da4',
-        'HOST': 'ec2-34-233-64-238.compute-1.amazonaws.com',
+        'NAME': 'd8qmsiboe6ko0h',
+        'USER': 'eukbcawtolzasl',
+        'PASSWORD': 'b5f6c19d7526083deef30a07f6da08d524c4ae823dfea835cc5e7be93c1cc42b',
+        'HOST': 'ec2-54-84-142-90.compute-1.amazonaws.com',
         'PORT': '5432',
         }
 }
