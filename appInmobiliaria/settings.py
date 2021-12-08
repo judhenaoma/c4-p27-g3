@@ -91,7 +91,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'appInmobiliaria.wsgi.application'
+# WSGI_APPLICATION = 'appInmobiliaria.wsgi.application'
 
 
 # Database
@@ -114,12 +114,12 @@ WSGI_APPLICATION = 'appInmobiliaria.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd32ufgocuf985o',
-        'USER': 'erokzdsvrdayvk',
-        'PASSWORD': 'a70410e26df88769207a8cae1fda9387fcfd26712332a2c0dad4046045471da4',
-        'HOST': 'ec2-34-233-64-238.compute-1.amazonaws.com',
+        'NAME': 'd1u1jo1p8q1j3b',
+        'USER': 'vwtaracyfpyfnc',
+        'PASSWORD': '5078dbb0348da3a3a8eec45065d5b131af516224b2ac33a0e8cfc2d6e031e9ab',
+        'HOST': 'ec2-54-221-74-111.compute-1.amazonaws.com',
         'PORT': '5432',
-        }
+    }
 }
 
 # Password validation
